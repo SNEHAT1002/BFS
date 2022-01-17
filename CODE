@@ -1,0 +1,33 @@
+N = 5
+G = [[0, 2, 7, 0, 0],
+     [2, 0, 8, 5, 4],
+     [7, 8, 0, 0, 2],
+     [0, 5, 0, 0, 3],
+     [0, 4, 2, 3, 0]]
+
+cur = [0, 0, 0, 0, 0]
+
+no_edge = 0
+
+cur[0] = True
+sum = 0
+
+while (no_edge < N - 1):
+    
+    low = 9999999
+    a = 0
+    b = 0
+    for m in range(N):
+        if cur[m]:
+            for n in range(N):
+                if ((not cur[n]) and G[m][n]):  
+                    
+                    if low > G[m][n]:
+                        low = G[m][n]
+                        a = m
+                        b = n
+    print("Node " + str(a) + " - " + "Node " + str(b) + " : " + str(G[a][b]))
+    cur[b] = True
+    sum += int(str(G[a][b]))
+    no_edge += 1
+print("Total Cost = ",sum)
